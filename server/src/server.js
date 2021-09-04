@@ -18,18 +18,18 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-	socket.emit("me", socket.id);
+	socket.emit("user", socket.id);
 
-	socket.on("calluser", ({ userToCall, signalData, from, name }) => {
-		io.to(userToCall).emit("calluser", { signal: signalData, from, name });
+	socket.on("call-user", ({ userToCall, signalData, from, name }) => {
+		io.to(userToCall).emit("call-user", { signal: signalData, from, name });
 	});
 
-	socket.on("answercall", (data) => {
-		io.to(data.to).emit("callaccepted", data.signal);
+	socket.on("answer-call", (data) => {
+		io.to(data.to).emit("call-accepted", data.signal);
 	});
 
 	socket.on("disconnect", () => {
-		socket.broadcast.emit("callended");
+		socket.broadcast.emit("call-ended");
 	});
 });
 

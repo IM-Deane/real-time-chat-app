@@ -4,7 +4,7 @@ const app = express();
 const httpServer = require("http").createServer(app);
 const cors = require("cors");
 
-require("dotenv").config();
+const PORT = process.env.PORT || 5000;
 
 const io = require("socket.io")(httpServer, {
 	cors: {
@@ -42,7 +42,6 @@ io.on("connection", (socket) => {
 	});
 });
 
-const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
 	console.log(`Server listening on port ${PORT}`);
 });

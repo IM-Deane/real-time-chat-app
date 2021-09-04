@@ -18,8 +18,9 @@ Additional chat options (text chat i'm looking at you) coming soon.
 
 - React w/Context API
 - Node/Express.js
-- Web RTC (Simple Peer) & Socket.io
-- JEST for testing
+- Web RTC ([Simple Peer](https://www.npmjs.com/package/simple-peer)) &
+  [Socket.io](https://socket.io/)
+- [JEST](https://jestjs.io/docs/getting-started) for testing
 
 ## Getting Started
 

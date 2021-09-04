@@ -2,9 +2,10 @@
 
 TODO: ADD PROJECT HEADER [Project Header](#)
 
-**Current Version: 0.0.5**
+**Current Version: 0.0.6**
 
-TODO: Live demo site: [I GO NOWHERE](#)
+**Live demo site:**
+[https://loqui-chat.herokuapp.com/](https://loqui-chat.herokuapp.com/)
 
 ## Description
 

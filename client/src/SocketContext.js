@@ -44,11 +44,14 @@ const ContextProvider = ({ children }) => {
 			});
 
 		socket.on("user", (id) => setThisUser(id));
+		socket.on("login", (message) => {
+			console.log(message);
+		});
 
 		socket.on("call-user", ({ from, name: callerName, signal }) => {
 			setCallSettings({ isRecievedCall: true, from, name: callerName, signal });
 		});
-	}, [videoStream]);
+	}, []);
 
 	const answerCall = () => {
 		setCallAccepted(true);

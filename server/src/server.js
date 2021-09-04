@@ -29,6 +29,8 @@ app.get("/*", (req, res) => {
 io.on("connection", (socket) => {
 	socket.emit("user", socket.id);
 
+	socket.emit("login", "A new user has logged in");
+
 	socket.on("call-user", ({ userToCall, signalData, from, name }) => {
 		io.to(userToCall).emit("call-user", { signal: signalData, from, name });
 	});

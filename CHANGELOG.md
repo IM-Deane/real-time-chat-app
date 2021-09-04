@@ -1,5 +1,17 @@
 # Version History
 
+**Version 0.0.6:**
+
+**Major:**
+
+- Deployed a test site to:
+  [https://loqui-chat.herokuapp.com/](https://loqui-chat.herokuapp.com/)
+
+_Minor:_
+
+Fixed an error that was causing the video to continually rerender. It turns out
+the video stream was listed as a dependency of useEffect().. ooops!
+
 **Version 0.0.5:**
 
 Added additional styling and functionality to video control panel. Users must

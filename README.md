@@ -1,6 +1,6 @@
 # Project: Real-time Video Chat App
 
-TODO: ADD PROJECT HEADER ![Project Header](#)
+TODO: ADD PROJECT HEADER [Project Header](#)
 
 **Current Version: 0.0.5**
 
@@ -16,7 +16,7 @@ Additional chat options (text chat i'm looking at you) coming soon.
 
 ### Stack
 
-- React with Context API
+- React w/Context API
 - Node/Express.js
 - Web RTC (Simple Peer) & Socket.io
 - JEST for testing

@@ -21,6 +21,9 @@ const ContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		// Enable access to browser video and audio devices
+		/* ***IMPORTANT NOTE: getUserMedia() will throw an error of type undefined 
+		    if connection isn't secure (https)
+		*/
 		navigator.mediaDevices
 			.getUserMedia({ video: true, audio: true })
 			.then((currentStream) => {
@@ -28,6 +31,14 @@ const ContextProvider = ({ children }) => {
 				setVideoStream(currentStream);
 
 				thisUserVideo.current.srcObject = currentStream;
+			})
+			.catch((error) => {
+				console.log(error);
+				if (error.toString().includes("Permission denied")) {
+					console.log(
+						"For this app to work, it must be allowed to access your video and audio."
+					);
+				}
 			});
 
 		socket.on("user", (id) => setThisUser(id));
@@ -66,7 +77,7 @@ const ContextProvider = ({ children }) => {
 				userToCall: id,
 				signalData: data,
 				from: thisUser,
-				thisUserName,
+				name: thisUserName,
 			});
 		});
 

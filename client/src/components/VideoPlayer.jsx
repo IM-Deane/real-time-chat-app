@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 function VideoPlayer() {
 	const {
-		name,
+		thisUserName,
 		callAccepted,
 		thisUserVideo,
 		otherUserVideo,
@@ -44,7 +44,7 @@ function VideoPlayer() {
 				<Paper className={classes.paper}>
 					<Grid item xs={12} md={6}>
 						<Typography variant="h5" gutterBottom>
-							{name || "Name"}
+							{thisUserName || "Name"}
 						</Typography>
 						<video
 							playsInline

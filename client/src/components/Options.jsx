@@ -85,6 +85,9 @@ function Options({ children }) {
 								fullWidth
 								onChange={(e) => setThisUserName(e.target.value)}
 							/>
+							<Typography variant="body1" color="textPrimary">
+								Your ID: {idToCall}
+							</Typography>
 							<CopyToClipboard text={thisUser} className={classes.margin}>
 								<Button
 									variant="contained"

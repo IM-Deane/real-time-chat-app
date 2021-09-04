@@ -26,10 +26,12 @@ app.get("/*", (req, res) => {
 	res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
+// TODO: Address issue with sockets not connecting
 io.on("connection", (socket) => {
 	socket.emit("user", socket.id);
+	console.log(socket.id);
 
-	socket.emit("login", "A new user has logged in");
+	io.emit("greetings", "Greetings from server!");
 
 	socket.on("call-user", ({ userToCall, signalData, from, name }) => {
 		io.to(userToCall).emit("call-user", { signal: signalData, from, name });

@@ -7,7 +7,7 @@ const SocketContext = createContext();
 // TODO: UPDATE CLIENT URL
 // development: http:localhost:8000
 // production: https://loqui-chat.herokuapp.com/
-const socket = io("*/");
+const socket = io("/*");
 
 const ContextProvider = ({ children }) => {
 	const [videoStream, setVideoStream] = useState(null);
@@ -42,11 +42,9 @@ const ContextProvider = ({ children }) => {
 					);
 				}
 			});
+		socket.on("greetings", (msg) => console.log(msg));
 
 		socket.on("user", (id) => setThisUser(id));
-		socket.on("login", (message) => {
-			console.log(message);
-		});
 
 		socket.on("call-user", ({ from, name: callerName, signal }) => {
 			setCallSettings({ isRecievedCall: true, from, name: callerName, signal });

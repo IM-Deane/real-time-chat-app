@@ -5,7 +5,7 @@ import Peer from "simple-peer";
 const SocketContext = createContext();
 
 // TODO: UPDATE CLIENT URL
-const socket = io("http://localhost:5000");
+const socket = io("http://localhost:8000");
 
 const ContextProvider = ({ children }) => {
 	const [videoStream, setVideoStream] = useState(null);

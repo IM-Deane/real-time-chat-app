@@ -5,8 +5,9 @@ import Peer from "simple-peer";
 const SocketContext = createContext();
 
 // TODO: UPDATE CLIENT URL
+// development: http:localhost:8000
 // production: https://loqui-chat.herokuapp.com/
-const socket = io("https://loqui-chat.herokuapp.com/");
+const socket = io("*/");
 
 const ContextProvider = ({ children }) => {
 	const [videoStream, setVideoStream] = useState(null);

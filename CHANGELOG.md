@@ -1,5 +1,9 @@
 # Version History
 
+**Version 0.0.3:**
+
+Created video player component that renders each users video stream.
+
 **Version 0.0.2:**
 
 Added styling to home page.

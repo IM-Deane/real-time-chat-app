@@ -13,17 +13,19 @@ const ContextProvider = ({ children }) => {
 	const [callSettings, setCallSettings] = useState({});
 	const [callAccepted, setCallAccepted] = useState(false);
 	const [callEnded, setCallEnded] = useState(false);
-	const [name, setName] = useState("");
+	const [thisUserName, setThisUserName] = useState("");
 
 	const thisUserVideo = useRef();
 	const otherUserVideo = useRef();
 	const connectionRef = useRef();
 
 	useEffect(() => {
+		// Enable access to browser video and audio devices
 		navigator.mediaDevices
 			.getUserMedia({ video: true, audio: true })
 			.then((currentStream) => {
-				setVideoStream(videoStream);
+				// Create live video stream
+				setVideoStream(currentStream);
 
 				thisUserVideo.current.srcObject = currentStream;
 			});
@@ -64,7 +66,7 @@ const ContextProvider = ({ children }) => {
 				userToCall: id,
 				signalData: data,
 				from: thisUser,
-				name,
+				thisUserName,
 			});
 		});
 
@@ -96,8 +98,8 @@ const ContextProvider = ({ children }) => {
 				thisUserVideo,
 				otherUserVideo,
 				videoStream,
-				name,
-				setName,
+				thisUserName,
+				setThisUserName,
 				callEnded,
 				thisUser,
 				callUser,

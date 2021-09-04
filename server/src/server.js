@@ -1,4 +1,6 @@
-const app = require("express")();
+const path = require("path");
+const express = require("express");
+const app = express();
 const httpServer = require("http").createServer(app);
 const cors = require("cors");
 
@@ -11,10 +13,15 @@ const io = require("socket.io")(httpServer, {
 
 app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.get("/", (req, res) => {
 	res.status(200).send("Hello from your friendly server!");
+});
+
+// Serve the site on production deployment
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
 io.on("connection", (socket) => {
@@ -33,6 +40,7 @@ io.on("connection", (socket) => {
 	});
 });
 
+const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
 	console.log(`Server listening on port ${PORT}`);
 });

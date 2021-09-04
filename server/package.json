@@ -1,0 +1,19 @@
+{
+	"name": "chat-server",
+	"description": "Backend for Chat App",
+	"main": "src/server.js",
+	"scripts": {
+		"watch": "nodemon src/server.js",
+		"start": "node src/server.js"
+	},
+	"keywords": [],
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"socket.io": "^4.2.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.12"
+	}
+}

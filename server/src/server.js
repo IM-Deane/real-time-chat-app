@@ -23,9 +23,9 @@ app.get("/", (req, res) => {
 });
 
 // Serve the site on production deployment
-// app.get("/*", (req, res) => {
-// 	res.status(200).sendFile(path.join(__dirname, "..", "public", "index.html"));
-// });
+app.get("/*", (req, res) => {
+	res.status(200).sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 // TODO: Address issue with sockets not connecting
 io.on("connection", (socket) => {

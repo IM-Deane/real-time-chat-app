@@ -49,8 +49,13 @@ const ContextProvider = ({ children }) => {
 			setThisUser(id);
 		});
 
-		socket.on("call-user", ({ from, name: callerName, signal }) => {
-			setCallSettings({ isRecievedCall: true, from, name: callerName, signal });
+		socket.on("call-user", ({ recipientId, name: callerName, signal }) => {
+			setCallSettings({
+				isRecievedCall: true,
+				recipientId,
+				name: callerName,
+				signal,
+			});
 		});
 
 		socket.on("chat-message", (message) => {
@@ -72,7 +77,10 @@ const ContextProvider = ({ children }) => {
 		const peer = new Peer({ initiator: false, trickle: false });
 
 		peer.on("signal", (data) => {
-			socket.emit("answer-call", { signal: data, to: callSettings.from });
+			socket.emit("answer-call", {
+				signal: data,
+				to: callSettings.recipientId,
+			});
 		});
 
 		peer.on("stream", (currentStream) => {
@@ -93,7 +101,7 @@ const ContextProvider = ({ children }) => {
 			socket.emit("call-user", {
 				userToCall: id,
 				signalData: data,
-				from: thisUser,
+				recipientId: thisUser,
 				name: thisUserName,
 			});
 		});
@@ -104,9 +112,9 @@ const ContextProvider = ({ children }) => {
 
 		socket.on("call-accepted", (signal) => {
 			setCallAccepted(true);
-
 			peer.signal(signal);
 		});
+
 		connectionRef.current = peer;
 	};
 

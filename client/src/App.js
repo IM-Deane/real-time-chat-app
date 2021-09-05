@@ -40,16 +40,21 @@ function App() {
 				</Typography>
 			</AppBar>
 			<Grid container justifyContent="center" alignItems="center">
-				<Grid item xs={6}>
+				{/* <Grid item xs={2}>
+					<Options>
+						<Notifications />
+					</Options>
+				</Grid> */}
+				<Grid item xs={5}>
 					<VideoPlayer />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={4}>
 					<ChatWindow />
 				</Grid>
-				<Options>
-					<Notifications />
-				</Options>
 			</Grid>
+			<Options>
+				<Notifications />
+			</Options>
 		</main>
 	);
 }

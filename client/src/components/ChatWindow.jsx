@@ -10,8 +10,8 @@ import SendIcon from "@material-ui/icons/Send";
 
 const useStyles = makeStyles((theme) => ({
 	gridContainer: {
-		width: "550px",
-		minHeight: "320",
+		width: "100%",
+		minHeight: "320px",
 		justifyContent: "center",
 		[theme.breakpoints.down("xs")]: {
 			flexDirection: "column",
@@ -58,7 +58,7 @@ function ChatWindow() {
 			<Paper className={classes.paper}>
 				<Grid item xs={12} component="header">
 					<Typography variant="h6" gutterBottom>
-						Chat Title
+						{}
 					</Typography>
 				</Grid>
 				{/* Window */}

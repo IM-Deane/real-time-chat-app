@@ -1,5 +1,13 @@
 # Version History
 
+**Version 0.0.9:**
+
+Began refactoring the UI of the app. The goal is to make text the primary focus
+and relagate the video chat to an additional feature.
+
+The new UI will consist of three main display panels: chat channels, the main
+chat UI, and a profile tab for the current user.
+
 **Version 0.0.8:**
 
 Created basic text chat functionality. For the moment, when a message is

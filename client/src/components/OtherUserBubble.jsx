@@ -7,7 +7,7 @@ import { deepOrange } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
 	bubble: {
-		backgroundColor: "lightgrey",
+		backgroundColor: "#fff",
 		padding: "15px",
 		borderRadius: "8%",
 		margin: "10px",

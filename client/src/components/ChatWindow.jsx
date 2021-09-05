@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import ChatMessage from "./ChatMessage";
+import ChatToolbar from "./ChatToolbar";
 import { SocketContext } from "../SocketContext";
 
 import { Grid, Typography, TextField, Paper, Button } from "@material-ui/core";
@@ -10,9 +11,9 @@ import SendIcon from "@material-ui/icons/Send";
 
 const useStyles = makeStyles((theme) => ({
 	gridContainer: {
+		margin: 0,
 		width: "100%",
-		minHeight: "320px",
-		justifyContent: "center",
+		height: "100%",
 		[theme.breakpoints.down("xs")]: {
 			flexDirection: "column",
 		},
@@ -23,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
 		margin: "10px",
 	},
 	chatWindow: {
+		backgroundColor: "rgba(241,245,249)",
 		minWidth: "420px",
 		minHeight: "325px",
 		padding: "25px",
-		border: "1px solid grey",
-		borderRadius: "4%",
 		marginBottom: "15px",
+		overflowY: "scroll",
 	},
 }));
 
@@ -36,8 +37,13 @@ function ChatWindow() {
 	const [chatInput, setChatInput] = useState("");
 
 	const classes = useStyles();
-	const { emitNewChatMessage, chatMessages, setChatMessages, thisUser } =
-		useContext(SocketContext);
+	const {
+		emitNewChatMessage,
+		chatMessages,
+		setChatMessages,
+		thisUser,
+		callSettings,
+	} = useContext(SocketContext);
 
 	const handleMessageChange = (e) => setChatInput(e.target.value);
 
@@ -54,12 +60,10 @@ function ChatWindow() {
 	};
 
 	return (
-		<Grid container spacing={3} className={classes.gridContainer}>
+		<Grid container direction="column" className={classes.gridContainer}>
 			<Paper className={classes.paper}>
 				<Grid item xs={12} component="header">
-					<Typography variant="h6" gutterBottom>
-						{}
-					</Typography>
+					<ChatToolbar user={callSettings} />
 				</Grid>
 				{/* Window */}
 				<Grid item xs={12} className={classes.chatWindow}>
@@ -68,7 +72,12 @@ function ChatWindow() {
 							<ChatMessage key={id} message={text} senderData={true} />
 						))}
 				</Grid>
-				<Grid container spacing={2} alignItems="center">
+				<Grid
+					container
+					spacing={2}
+					alignItems="center"
+					style={{ justifyContent: "flex-end" }}
+				>
 					<Grid item xs={8}>
 						<TextField
 							variant="outlined"

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 		justifySelf: "end",
 	},
 	bubble: {
-		backgroundColor: "lightblue",
+		backgroundColor: "#6366F1",
 		padding: "15px",
 		borderRadius: "8%",
 		margin: "10px",

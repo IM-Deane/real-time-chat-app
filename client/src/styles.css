@@ -10,3 +10,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.background-light {
+	background-color: rgba(241, 245, 249);
+}

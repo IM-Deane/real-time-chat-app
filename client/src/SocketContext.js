@@ -7,7 +7,7 @@ const SocketContext = createContext();
 // TODO: UPDATE CLIENT URL
 // development: http:localhost:8000
 // production: https://loqui-chat.herokuapp.com/
-const socket = io("/*");
+const socket = io();
 
 const ContextProvider = ({ children }) => {
 	const [videoStream, setVideoStream] = useState(null);
@@ -16,6 +16,7 @@ const ContextProvider = ({ children }) => {
 	const [callAccepted, setCallAccepted] = useState(false);
 	const [callEnded, setCallEnded] = useState(false);
 	const [thisUserName, setThisUserName] = useState("");
+	const [chatMessages, setChatMessages] = useState([]);
 
 	const thisUserVideo = useRef();
 	const otherUserVideo = useRef();
@@ -42,14 +43,27 @@ const ContextProvider = ({ children }) => {
 					);
 				}
 			});
-		socket.on("greetings", (msg) => console.log(msg));
 
-		socket.on("user", (id) => setThisUser(id));
+		socket.on("user", (id) => {
+			console.log("a user connected", id);
+			setThisUser(id);
+		});
 
 		socket.on("call-user", ({ from, name: callerName, signal }) => {
 			setCallSettings({ isRecievedCall: true, from, name: callerName, signal });
 		});
+
+		socket.on("chat-message", (message) => {
+			console.log(message);
+			setChatMessages([...chatMessages, message]);
+		});
 	}, []);
+
+	const emitNewChatMessage = (newMessage, recipientId) => {
+		socket.emit("chat-message", newMessage, recipientId, (res) => {
+			console.log(res.status);
+		});
+	};
 
 	const answerCall = () => {
 		setCallAccepted(true);
@@ -119,6 +133,9 @@ const ContextProvider = ({ children }) => {
 				callUser,
 				leaveCall,
 				answerCall,
+				emitNewChatMessage,
+				chatMessages,
+				setChatMessages,
 			}}
 		>
 			{children}

@@ -1,8 +1,9 @@
 import React from "react";
-import { Typography, AppBar } from "@material-ui/core";
+import { Typography, AppBar, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import VideoPlayer from "./components/VideoPlayer";
+import ChatWindow from "./components/ChatWindow";
 import Notifications from "./components/Notifications";
 import Options from "./components/Options";
 
@@ -38,10 +39,17 @@ function App() {
 					Loqui Video Chat
 				</Typography>
 			</AppBar>
-			<VideoPlayer />
-			<Options>
-				<Notifications />
-			</Options>
+			<Grid container justifyContent="center" alignItems="center">
+				<Grid item xs={6}>
+					<VideoPlayer />
+				</Grid>
+				<Grid item xs={6}>
+					<ChatWindow />
+				</Grid>
+				<Options>
+					<Notifications />
+				</Options>
+			</Grid>
 		</main>
 	);
 }

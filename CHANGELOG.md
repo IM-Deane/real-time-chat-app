@@ -1,5 +1,23 @@
 # Version History
 
+**Version 0.0.8:**
+
+Created basic text chat functionality. For the moment, when a message is
+submitted it is broadcast to all users on the server - besides the sender of
+course.
+
+I now plan to refactor the app UI into a more functional dashboard.
+
+After these changes have been implemented, I will expand upon the text chat.
+
+**Version 0.0.7:**
+
+Began implementing a basic text chat UI.
+
+The end goal of this feature will be to allow users to send simple text messages
+to each other. This would provide an alternative path for those with video/audio
+connection issues.
+
 **Version 0.0.6:**
 
 **Major:**

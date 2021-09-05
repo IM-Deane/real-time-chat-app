@@ -4,7 +4,7 @@ import ChatMessage from "./ChatMessage";
 import ChatToolbar from "./ChatToolbar";
 import { SocketContext } from "../SocketContext";
 
-import { Grid, Typography, TextField, Paper, Button } from "@material-ui/core";
+import { Grid, TextField, Paper, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SendIcon from "@material-ui/icons/Send";
@@ -14,22 +14,23 @@ const useStyles = makeStyles((theme) => ({
 		margin: 0,
 		width: "100%",
 		height: "100%",
-		[theme.breakpoints.down("xs")]: {
-			flexDirection: "column",
-		},
 	},
 	paper: {
+		height: "100%",
 		padding: "30px",
 		border: "2px solid black",
-		margin: "10px",
+		margin: 0,
 	},
 	chatWindow: {
 		backgroundColor: "rgba(241,245,249)",
 		minWidth: "420px",
-		minHeight: "325px",
+		minHeight: "75%",
 		padding: "25px",
 		marginBottom: "15px",
 		overflowY: "scroll",
+	},
+	chatInput: {
+		backgroundColor: "rgba(241,245,249)",
 	},
 }));
 
@@ -74,25 +75,27 @@ function ChatWindow() {
 				</Grid>
 				<Grid
 					container
-					spacing={2}
+					spacing={1}
 					alignItems="center"
 					style={{ justifyContent: "flex-end" }}
 				>
-					<Grid item xs={8}>
+					<Grid item xs={10}>
 						<TextField
 							variant="outlined"
 							name="chatInput"
+							className={classes.chatInput}
 							value={chatInput}
 							placeholder="Type something to send..."
 							fullWidth
 							onChange={handleMessageChange}
 						/>
 					</Grid>
-					<Grid item xs={3}>
+					<Grid item xs={2}>
 						<Button
 							variant="contained"
 							color="primary"
 							size="large"
+							style={{ padding: "14px" }}
 							onClick={handleSubmitMessage}
 							endIcon={<SendIcon />}
 						>

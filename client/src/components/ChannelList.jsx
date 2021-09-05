@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
 		width: "80%",
 		height: "100%",
 		border: "2px solid black",
-		[theme.breakpoints.down("xs")]: {
-			flexDirection: "column",
-		},
 		overflowY: "scroll",
 	},
 	searchContainer: {

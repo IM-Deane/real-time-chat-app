@@ -1,5 +1,8 @@
 import React from "react";
 
+import VideoPlayer from "./VideoPlayer";
+import Notifications from "./Notifications";
+import Options from "./Options";
 import BadgeAvatar from "./BadgeAvatar";
 
 import { Grid, Typography, IconButton } from "@material-ui/core";

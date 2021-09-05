@@ -1,12 +1,10 @@
 import React from "react";
-import { Typography, AppBar, Grid, Paper } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 import ChannelList from "./components/ChannelList";
-import VideoPlayer from "./components/VideoPlayer";
+import UserProfile from "./components/UserProfile";
 import ChatWindow from "./components/ChatWindow";
-import Notifications from "./components/Notifications";
-import Options from "./components/Options";
 
 const useStyles = makeStyles((theme) => ({
 	gridContainer: {
@@ -33,19 +31,12 @@ function App() {
 			<Grid item className={classes.gridItem} xs={3}>
 				<ChannelList />
 			</Grid>
-			{/* <Grid item xs={5}>
-					<VideoPlayer />
-				</Grid> */}
 			<Grid item className={classes.gridItem} xs={5}>
 				<ChatWindow />
 			</Grid>
-			<Grid item className={classes.gridItem} xs={2}>
-				User Settings
-			</Grid>
-
-			{/* <Options>
-				<Notifications />
-			</Options> */}
+			{/* <Grid item className={classes.gridItem} xs={2}>
+				<UserProfile />
+			</Grid> */}
 		</Grid>
 	);
 }
